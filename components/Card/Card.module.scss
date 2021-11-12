@@ -1,0 +1,6 @@
+@use '../../styles/layout';
+.container{
+   @include layout.size(300px,400px,rgba(255, 255, 255, 0.75));
+   border-radius: 30px;
+   border: 2px solid #c3c3c3;
+}

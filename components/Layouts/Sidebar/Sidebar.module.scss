@@ -1,0 +1,11 @@
+.item{
+    margin: 20px;
+    padding: 15px;
+    border-radius: 13px;
+}
+
+.item:hover{
+    color:#fff;
+    background-color: #A1B753;
+    transition: 0.2s;
+}
