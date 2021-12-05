@@ -17,7 +17,7 @@ import transferMoneyIcon from "../public/images/transfer-money.png";
 import widthDrawMoneyIcon from "../public/images/width-draw-money.png";
 import historyTransactionIcon from "../public/images/history-icon.jpeg";
 import Link from 'next/link'
-
+import OneSignal from 'react-onesignal';
 const Home: NextPage = () => {
   let userInfo = useSelector(state => state.user.info);
 
