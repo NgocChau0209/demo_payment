@@ -12,7 +12,7 @@ import {
 import RouteGuard from '../components/RouteGuard/RouteGuard';
 import { useEffect } from "react";
 import { createTransactionQuery, getTransactionQuery } from "./queries";
-
+import OneSignal from 'react-onesignal';
 const client = new ApolloClient({
   uri: 'http://localhost:3032/graphql',
   cache: new InMemoryCache()
@@ -20,20 +20,32 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
+    // window.OneSignal = window.OneSignal || [];
+    // OneSignal.push(function () {
+    //   OneSignal.init({
+    //     appId: "32045294-ebc9-4087-96d6-d1291a602d06",
+    //   });
+    // });
+
+    // OneSignal.push(function () {
+    //   OneSignal.init({
+    //     appId: "32045294-ebc9-4087-96d6-d1291a602d06",
+    //   });
+    // });
     // client.query({
     //   query: getTransactionQuery,
     //   variables:{
     //     userId: '6197903ddd7f7527143f0448'
     //   }
     // }),
-    client.mutate({
-      mutation: createTransactionQuery,
-      variables:{
-        amount: 2000.0,
-        title: 'Chuyen tien qua link',
-        message: 'hello'
-      }
-    })
+    // client.mutate({
+    //   mutation: createTransactionQuery,
+    //   variables:{
+    //     amount: 2000.0,
+    //     title: 'Chuyen tien qua link',
+    //     message: 'hello'
+    //   }
+    // })
   }, [])
 
   return (
@@ -50,6 +62,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
           />
+          <script
+            src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+            async=""
+          ></script>
+
+
           {/* <link rel="icon" href={images.favicon} /> */}
         </Head>
         <Layout>
