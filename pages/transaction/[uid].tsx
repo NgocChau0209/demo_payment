@@ -1,8 +1,6 @@
-import { getTransactionDetail } from '../api';
-import { getTransactionList } from '../api/index.ts';
 import {convertTimestamptoDatetime} from '../../module/date';
 
-function TransactionDetail({detail}){
+function TransactionDetail(){
     
     return(<div className=''>
        <h1>Lịch sử giao dịch</h1> 
@@ -31,27 +29,6 @@ function TransactionDetail({detail}){
             </p>
        </div>   
     </div>)
-}
-
-export async function getStaticPaths() {
-    const res = await  getTransactionList();
-    // Get the paths we want to pre-render based on posts
-    const paths = res.map((item) => ({
-      params: { uid: item.uid },
-    }))
-
-    return { paths, fallback: false }
-}
-
-
-export const getStaticProps = async({params}) => {
-    let id = params.id;
-    let res = await getTransactionDetail('av');
-    return {
-        props: {
-          detail: res,
-        },
-    }
 }
 
 export default  TransactionDetail;

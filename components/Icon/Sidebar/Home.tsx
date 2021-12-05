@@ -1,6 +1,6 @@
 export function HomeIcon() {
     return(
-        <h1>s</h1>
+        <h1></h1>
 
     )
 }

@@ -1,0 +1,21 @@
+@use "../layout";
+
+.user {
+  width: 300px;
+  margin: auto;
+  @include layout.flex-justify-center;
+}
+
+.functionItem {
+  @include layout.flex-center;
+  @include layout.flex-column;
+}
+
+.functionText {
+  text-align: center;
+}
+
+.function {
+  @include layout.flex-justify-around;
+  margin-top: 20px;
+}

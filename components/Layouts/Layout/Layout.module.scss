@@ -1,18 +1,19 @@
-.container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
 
-.sidebar{
-    background-color:#f9f9f9;
-    float: left;
-    margin: 20px 10px;
-    min-width: 200px;
-    max-width: 300px;
-    color: #484848;
+.sidebar {
+  background-color: #f9f9f9;
+  float: left;
+  margin: 20px 10px;
+  min-width: 200px;
+  max-width: 300px;
+  color: #484848;
 }
 
-.content{
-    margin: 40px;
+.content {
+  margin: 40px;
+  width: calc(100% - 300px);
 }

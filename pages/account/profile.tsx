@@ -1,7 +1,15 @@
 import { userInfo } from "../../data/user"
 import styles from "../../styles/pages/User.module.scss"
 import { replaceCharacter } from "../../module/common";
+import { useState, useEffect } from "react";
+import { instance as api } from "../../services/api";
 export default function Profile() {
+    const [profile, setProfile] = useState({})
+    useEffect(async () => {
+        const res = await api.post('/', {
+            id: "618ca8cb287a244a3b1c1d8c",
+        })
+    }, [])
 
     return (
         <>

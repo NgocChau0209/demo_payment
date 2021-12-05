@@ -2,25 +2,23 @@ import classes from "classnames";
 import styles from "./Transaction.module.scss"
 import { ArrowLeftIcon } from '../../Icon/ArrowLeft';
 import { numberWithCommas } from '../../../module/common';
-import { convertTimestamptoDatetime, getDate } from "../../../module/date";
+import { convertUTCToDateTime, getDate, getDateUTC } from "../../../module/date";
 
 import { useRouter } from 'next/router'
 
-export function TransactionCard({uid, type, date, amount, title, message,key,isLastItem}) {
+export function TransactionCard({_id, income, time, amount, title, message,key,isLastItem}) {
     const router = useRouter();
     const handleClick = () => {
-        router.push(`/transaction/${uid}`)
+        router.push(`/transaction/${_id}`)
     }
 
-    let isIncome = type === "income";
-    let dateTime = convertTimestamptoDatetime(date);
-    let day = getDate(dateTime);
+    let isIncome = income === 1;
     return (
         <div className="" onClick={()=>handleClick()} key={key}>
             <div className={styles.container}>
                 <div className={styles.left}>
                     <div className={classes(styles.date, isIncome ? styles.income : styles.outcome, "h3-32")}>
-                        <p>{day}</p>
+                        <p>{getDateUTC(time)}</p>
                         <div className={classes(styles.inner_layer, isIncome ? styles.inner_layer__income : styles.inner_layer__outcome)}>
                         </div>
                     </div>

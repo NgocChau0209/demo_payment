@@ -11,11 +11,11 @@ export let sidebarList = [
     icon: HomeIcon,
   },
   
-  // {
-  //   text: "Thống kê",
-  //   url: "/statistical",
-  //   icon: StatisIcon,
-  // },
+  {
+    text: "Thống kê",
+    url: "/statistical",
+    icon: StatisIcon,
+  },
   {
     text: "Quản lí thẻ",
     url: "/cards",
@@ -30,6 +30,10 @@ export let sidebarList = [
     text: "Giao dịch",
     url: "/transaction",
     icon: TransactionIcon,
+  },
+  {
+    text: "Đăng xuất",
+    url: "/account/logout",
   },
   
 ];

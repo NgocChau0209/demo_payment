@@ -1,0 +1,41 @@
+.container {
+  background: rgba(10, 15, 6, 0.9);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 780px;
+  height: fit-content;
+  box-sizing: border-box;
+  background: #ffffff;
+  opacity: 0.9;
+  border-radius: 20px;
+}
+
+.content {
+  white-space: normal;
+  font-weight: bold;
+  width: 700px;
+  padding: 40px 0px;
+  margin: auto;
+}
+
+.button {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 20px;
+}

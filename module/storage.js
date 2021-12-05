@@ -1,7 +1,7 @@
 export function getItemLocalStorage(key) {
     if (!key) return
     if (typeof window !== 'undefined') {
-        return localStorage.getItem(JSON.parse(key))
+        return JSON.parse(localStorage.getItem(key));
     }
 }
 

@@ -1,0 +1,31 @@
+@use "../../styles/layout";
+.input {
+  outline: none;
+  -webkit-transition: background-color 350ms ease-in-out,
+    box-shadow 350ms ease-in-out;
+  transition: background-color 350ms ease-in-out, box-shadow 350ms ease-in-out;
+  border: 1px solid #fef0e4;
+  border-color: #707382;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1rem;
+  width: 100%;
+  min-width: auto;
+  border-radius: 2px;
+  color: #10162f;
+  background-color: #ffffff;
+  text-indent: 0;
+  padding-right: initial;
+  height: 50px;
+  width: 320px;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
