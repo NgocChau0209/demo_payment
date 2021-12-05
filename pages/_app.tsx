@@ -12,7 +12,6 @@ import {
 import RouteGuard from '../components/RouteGuard/RouteGuard';
 import { useEffect } from "react";
 import { createTransactionQuery, getTransactionQuery } from "./queries";
-import OneSignal from 'react-onesignal';
 const client = new ApolloClient({
   uri: 'http://localhost:3032/graphql',
   cache: new InMemoryCache()

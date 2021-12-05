@@ -16,7 +16,6 @@ import rechargeMoneyIcon from "../public/images/cash-recharge.png";
 import transferMoneyIcon from "../public/images/transfer-money.png";
 import widthDrawMoneyIcon from "../public/images/width-draw-money.png";
 import historyTransactionIcon from "../public/images/history-icon.jpeg";
-import OneSignal from 'react-onesignal';
 import Link from 'next/link'
 
 const Home: NextPage = () => {
