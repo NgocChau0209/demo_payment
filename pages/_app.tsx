@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     var OneSignal = window.OneSignal || [];
 
     OneSignal.init({
-      appId: "32045294-ebc9-4087-96d6-d1291a602d06",
+      appId: "06d4fe7b-b54d-4ce2-8abc-09b5f29350bf",
       notifyButton: {
         enable: true,
       },
