@@ -22,6 +22,7 @@ const Home: NextPage = () => {
   let userInfo = useSelector(state => state.user.info);
 
   const getOnesignalId = async () => {
+    console.log('start')
     if (window.OneSignal) {
       const userId = await window.OneSignal.getUserId();
       console.log(userId);
