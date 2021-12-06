@@ -23,31 +23,19 @@ const Home: NextPage = () => {
 
   useEffect(() => {
 
-    OneSignal.init({
-      appId: "32045294-ebc9-4087-96d6-d1291a602d06",
-      notifyButton: {
-        enable: true,
-      },
+    // OneSignal.init({
+    //   appId: "32045294-ebc9-4087-96d6-d1291a602d06",
+    //   notifyButton: {
+    //     enable: true,
+    //   },
 
-      allowLocalhostAsSecureOrigin: true,
-    });
+    //   allowLocalhostAsSecureOrigin: true,
+    // });
   }, []);
 
   return (
     <>
-      <Head>
-        <title>My page title</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {/* <script>
-            window.OneSignal = window.OneSignal || [];
-            OneSignal.push(function() {
-              OneSignal.init({
-                appId: "32045294-ebc9-4087-96d6-d1291a602d06",
-              })
-            });
-          </script> */}
-        {/* <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script> */}
-      </Head>
+      
       <div className={styles.container}>
 
         <div className={styles.user}>

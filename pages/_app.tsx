@@ -16,21 +16,30 @@ const client = new ApolloClient({
   uri: 'http://localhost:3032/graphql',
   cache: new InMemoryCache()
 });
+import OneSignal from 'react-onesignal';
+
 function MyApp({ Component, pageProps }: AppProps) {
 
-  useEffect(() => {
-    // window.OneSignal = window.OneSignal || [];
-    // OneSignal.push(function () {
-    //   OneSignal.init({
-    //     appId: "32045294-ebc9-4087-96d6-d1291a602d06",
-    //   });
-    // });
+  const initOneSignalNotification = () => {
+    if (window.Onesignal) return false;
 
-    // OneSignal.push(function () {
-    //   OneSignal.init({
-    //     appId: "32045294-ebc9-4087-96d6-d1291a602d06",
-    //   });
-    // });
+    console.log(1)
+
+    var OneSignal = window.OneSignal || [];
+
+    OneSignal.init({
+      appId: "32045294-ebc9-4087-96d6-d1291a602d06",
+      notifyButton: {
+        enable: true,
+      },
+
+      allowLocalhostAsSecureOrigin: true,
+    });
+  }
+
+
+  useEffect(() => {
+    initOneSignalNotification();
     // client.query({
     //   query: getTransactionQuery,
     //   variables:{
