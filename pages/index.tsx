@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   // }
 
   useEffect(()=>{
-    getOnesignalId();
+    // getOnesignalId();
   },[])
 
   return (
