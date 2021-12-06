@@ -23,13 +23,14 @@ const Home: NextPage = () => {
 
   const getOnesignalId = async () => {
     if (window.OneSignal) {
-      const userId = await window.OneSignal.getUserId();
+      const userId = await window.OneSignal.getUserId().catch(err=>console.log(err));
       console.log(userId);
       return userId
     } else {
       return null
     }
   }
+
   useEffect(()=>{
     getOnesignalId();
   },[])
