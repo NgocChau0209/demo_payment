@@ -32,8 +32,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
 
+  const getOnesignalId = async () => {
+    if (window.OneSignal) {
+      const userId = await window.OneSignal.getUserId();
+      console.log(userId);
+      return userId
+    } else {
+      return null
+    }
+  }
+
   useEffect(() => {
     initOneSignalNotification();
+    getOnesignalId();
     // client.query({
     //   query: getTransactionQuery,
     //   variables:{
