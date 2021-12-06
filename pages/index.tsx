@@ -17,21 +17,8 @@ import transferMoneyIcon from "../public/images/transfer-money.png";
 import widthDrawMoneyIcon from "../public/images/width-draw-money.png";
 import historyTransactionIcon from "../public/images/history-icon.jpeg";
 import Link from 'next/link'
-import OneSignal from 'react-onesignal';
 const Home: NextPage = () => {
   let userInfo = useSelector(state => state.user.info);
-
-  useEffect(() => {
-
-    // OneSignal.init({
-    //   appId: "32045294-ebc9-4087-96d6-d1291a602d06",
-    //   notifyButton: {
-    //     enable: true,
-    //   },
-
-    //   allowLocalhostAsSecureOrigin: true,
-    // });
-  }, []);
 
   return (
     <>
