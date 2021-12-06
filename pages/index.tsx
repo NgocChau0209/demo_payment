@@ -21,18 +21,18 @@ import Link from 'next/link';
 const Home: NextPage = () => {
   let userInfo = useSelector(state => state.user.info);
 
-  // const getOnesignalId = async () => {
-  //   if (window.OneSignal) {
-  //     const userId = window.OneSignal.getUserId().catch(err=>console.log(err));
-  //     console.log(userId);
-  //     return userId
-  //   } else {
-  //     return null
-  //   }
-  // }
+  const getOnesignalId = async () => {
+    if (window.OneSignal) {
+      const userId = window.OneSignal.getUserId().catch(err=>console.log(err));
+      console.log(userId);
+      return userId
+    } else {
+      return null
+    }
+  }
 
   useEffect(()=>{
-    // getOnesignalId();
+    getOnesignalId();
   },[])
 
   return (
