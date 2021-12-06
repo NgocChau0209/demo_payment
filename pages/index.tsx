@@ -27,7 +27,8 @@ const Home: NextPage = () => {
       console.log(userId);
       return userId
     } else {
-      return null
+      console.log('none');
+      return null;
     }
   }
 
