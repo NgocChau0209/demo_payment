@@ -16,9 +16,23 @@ import rechargeMoneyIcon from "../public/images/cash-recharge.png";
 import transferMoneyIcon from "../public/images/transfer-money.png";
 import widthDrawMoneyIcon from "../public/images/width-draw-money.png";
 import historyTransactionIcon from "../public/images/history-icon.jpeg";
-import Link from 'next/link'
+import Link from 'next/link';
+
 const Home: NextPage = () => {
   let userInfo = useSelector(state => state.user.info);
+
+  const getOnesignalId = async () => {
+    if (window.OneSignal) {
+      const userId = await window.OneSignal.getUserId();
+      console.log(userId);
+      return userId
+    } else {
+      return null
+    }
+  }
+  useEffect(()=>{
+    getOnesignalId();
+  },[])
 
   return (
     <>
