@@ -26,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     OneSignal.push(function () {
       OneSignal.init({
         appId: "06d4fe7b-b54d-4ce2-8abc-09b5f29350bf",
+        safari_web_id: "web.onesignal.auto.0c986762-0fae-40b1-a5f6-ee95f7275a97",
       });
     });
   };
