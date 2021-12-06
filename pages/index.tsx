@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
   const getOnesignalId = async () => {
     if (window.OneSignal) {
-      const userId = window.OneSignal.getUserId().catch(err=>console.log(err));
+      const userId = await window.OneSignal.getUserId();
       console.log(userId);
       return userId
     } else {
