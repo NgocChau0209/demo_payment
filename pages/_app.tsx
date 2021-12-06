@@ -22,20 +22,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const initOneSignalNotification = () => {
     if (window.Onesignal) return false;
-
-    console.log(1)
-
     var OneSignal = window.OneSignal || [];
-
-    OneSignal.init({
-      appId: "06d4fe7b-b54d-4ce2-8abc-09b5f29350bf",
-      notifyButton: {
-        enable: true,
-      },
-
-      allowLocalhostAsSecureOrigin: true,
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "06d4fe7b-b54d-4ce2-8abc-09b5f29350bf",
+      });
     });
-  }
+  };
 
 
   useEffect(() => {
