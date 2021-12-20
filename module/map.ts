@@ -3,8 +3,8 @@ import MastercardIcon from '../components/Icon/Bank/MasterCard';
 import PaypalIcon from '../components/Icon/Bank/Paypal';
 import VisaIcon from '../components/Icon/Bank/VISA';
 
-export function paymentRegister(type){
-    const list ={
+export function paymentRegister(type:string){
+    const list:any ={
         "mastercard":{
             background: {
                 'background': '#e0eafc',

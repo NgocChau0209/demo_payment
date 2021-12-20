@@ -1,5 +1,8 @@
 import styles from "./Title.module.scss";
-export function Title({text}){
+interface TitleProps {
+      text: string
+}
+export default function Title({ text }: TitleProps) {
       return (
             <p className={styles.container}>{text}</p>
       )

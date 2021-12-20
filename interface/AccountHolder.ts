@@ -1,4 +1,4 @@
-export interface IAccountHolder{
+export default interface IAccountHolder{
     bank: string;
     number: string;
     password: string;

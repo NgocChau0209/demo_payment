@@ -1,12 +1,12 @@
-import { ITransaction } from "./Transaction";
-export interface IUser {
+import ITransaction from "./Transaction";
+export default interface IUser {
     uid: string;
-    email: string;
+    email?: string;
     phoneNumber: string;
     name: string;
     identify: string;
     userName: string;
-    // balance: number;
+    balance: number;
     password: string;
     // // tài khoản liên kết
     // bankCard: [];

@@ -46,7 +46,7 @@ export function convertUTCToDateTime(date) {
   );
 }
 
-export function getDateUTC(date){
+export function getDateUTC(date:Date){
     let dateFomat = new Date(date);
     return dateFomat.getDate();
 }

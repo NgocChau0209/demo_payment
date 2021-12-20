@@ -1,10 +1,9 @@
 import axios from "axios";
-import { getItemLocalStorage } from "../module/storage";
-getItemLocalStorage
+import { getItemLocalStorage } from "module/storage";
 
-const baseURL='https://epayment-server.kytek.io/api';
+// const baseURL='https://epayment-server.kytek.io/api';
 
-// const baseURL = 'http://localhost:9988/api/';
+const baseURL = 'http://localhost:9988/api/';
 
 
 export const api = axios.create({
@@ -12,7 +11,7 @@ export const api = axios.create({
 })
 
 // Set the AUTH token for any request
-api.interceptors.request.use(function (config) {
+api.interceptors.request.use(function (config:any) {
       const token = getItemLocalStorage('token');
       config.headers.Authorization = token ? `Bearer ${token}` : '';
       return config;

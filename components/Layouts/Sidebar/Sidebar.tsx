@@ -38,9 +38,9 @@ export default function Sidebar() {
     return (
         <div className={classnames(styles.sidebar, isExtendSidebar ? styles.open : "")} ref={sidebarRef}>
             <div className={styles.logo_details}>
-                {isExtendSidebar ? <i className='bx bxl-c-plus-plus icon'></i> : ""}
+                {isExtendSidebar ? <i className={classnames('bx', 'bxl-c-plus-plus', 'icon')}></i> : ""}
                 {isExtendSidebar ? <div className={classnames(styles.logo_name, "title-18")}>CodingLab</div> : ""}
-                <i className='bx bx-menu' id={styles.btn} ref={closeBtnRef} onClick={expandSidebar}></i>
+                <i className={classnames('bx', 'bx-menu')} id={styles.btn} ref={closeBtnRef} onClick={expandSidebar}></i>
             </div>
             <ul className={styles.nav_list}>
                 {sidebarList.map((item, index) => {

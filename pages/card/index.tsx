@@ -9,9 +9,11 @@ export default function CardList({ }) {
     let [cardList, setCardList] = useState([]);
     const cardRedux = useSelector(state => state.card);
 
-    useEffect(async() => {
-        await getBankAccountListRedux();
-        console.log(cardRedux);
+    useEffect(() => {
+        async function getAllBankAccount(){
+            await getBankAccountListRedux();
+        }
+        getAllBankAccount();
     }, [])
 
     // function deleteCardItem(id){

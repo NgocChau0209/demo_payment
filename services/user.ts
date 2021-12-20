@@ -1,24 +1,17 @@
-import { saveItemLocalStorage } from "../module/storage";
 import { api } from "./api";
-import axios from "axios";
+import { saveItemLocalStorage } from "module/storage";
+import IUser from 'interface/User';
 
 function createUserAPI() {
       return {
-            checkEmailExist: async (email: string) => {
-                  let res = await api.post(`user/check-email`, { email });
-                  if (res.status === 200) {
-                        return res.data.message
-                  }
-                  // return res.message;
-            },
             checkPhoneNumber: async (phoneNumber: string) => {
                   let res = await api.post(`user/check-phone-number`, { phoneNumber });
                   if (res.status === 200) {
-                        return res.data.data;
+                        return res.data.data.isExist;
                   }
                   return null;
             },
-            signUp: async (data: any) => {
+            signUp: async (data: IUser) => {
                   let { phoneNumber, password, userName } = data
                   let params = {
                         phoneNumber,
@@ -29,7 +22,7 @@ function createUserAPI() {
                   return res.data.success;
 
             },
-            login: async (data: any) => {
+            login: async (data: IUser) => {
                   let { phoneNumber, password } = data
                   let params = {
                         phoneNumber,
@@ -43,6 +36,14 @@ function createUserAPI() {
                   }
                   return null;
 
+            },
+            getProfile: async ()=>{
+                  let res = await api.post(`user`);
+                  console.log('hello')
+                  if (res.status === 200 && res.data) {
+                        return res.data.data;
+                  }
+                  return null;
             }
       }
 

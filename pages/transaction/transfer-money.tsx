@@ -1,8 +1,9 @@
 import { useState } from "react";
-import TextInput from "../../components/Input/TextInput";
-import { Button } from "../../components/Button/Button";
-import { userAPI } from "../../services/user";
-import { transactionAPI } from "../../services/transaction";
+import { userAPI } from "services/user";
+import { transactionAPI } from "services/transaction";
+import Button from "components/Button/Button";
+import TextInput from "components/Input/TextInput";
+
 const TransferMoney = () => {
       let [transferData, setTransferData] = useState({ amount: 0, recieverPhoneNumber: '', message: '', recieverId: '', recieverName: '' });
       let timeoutSearchPhone: any = null;
@@ -24,7 +25,6 @@ const TransferMoney = () => {
                   if (timeoutSearchPhone) clearTimeout(timeoutSearchPhone)
                   timeoutSearchPhone = setTimeout(async () => {
                         let reciever = await userAPI.checkPhoneNumber(value);
-                        console.log(reciever);
                         setTransferData({
                               ...transferData,
                               recieverName: reciever.userName,

@@ -1,12 +1,21 @@
-import classes from "classnames";
 import styles from "./Transaction.module.scss"
-import { ArrowLeftIcon } from '../../Icon/ArrowLeft';
-import { numberWithCommas } from '../../../module/common';
-import { convertUTCToDateTime, getDate, getDateUTC } from "../../../module/date";
+import { ArrowLeftIcon } from 'components/Icon/ArrowLeft';
+import { numberWithCommas } from 'module/common';
+import { getDateUTC } from "module/date";
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+interface TransactionCardProps{
+    _id:string,
+    income: number,
+    time: Date,
+    amount: number,
+    title: string,
+    isLastItem: boolean,
+    message: string,
+    key: any
+}
 
-export function TransactionCard({_id, income, time, amount, title, message,key,isLastItem}) {
+export default function TransactionCard({_id, income, time, amount, title, message,key,isLastItem}:TransactionCardProps) {
     const router = useRouter();
     const handleClick = () => {
         router.push(`/transaction/${_id}`)
@@ -17,16 +26,16 @@ export function TransactionCard({_id, income, time, amount, title, message,key,i
         <div className="" onClick={()=>handleClick()} key={key}>
             <div className={styles.container}>
                 <div className={styles.left}>
-                    <div className={classes(styles.date, isIncome ? styles.income : styles.outcome, "h3-32")}>
+                    <div className={isIncome ? styles.income : styles.outcome}>
                         <p>{getDateUTC(time)}</p>
-                        <div className={classes(styles.inner_layer, isIncome ? styles.inner_layer__income : styles.inner_layer__outcome)}>
+                        <div className={isIncome ? styles.inner_layer__income : styles.inner_layer__outcome}>
                         </div>
                     </div>
                 </div>
 
                 <div className={styles.right}>
                     <div className={styles.top}>
-                        <p className={classes(styles.title, "tag-18",)}>{title}</p>
+                        <p className={styles.title}>{title}</p>
                         <div className={styles.icon}>
                             <ArrowLeftIcon color="#484848" />
                         </div>
@@ -37,7 +46,7 @@ export function TransactionCard({_id, income, time, amount, title, message,key,i
                             {message}
                         </div>
 
-                        <div className={classes(isIncome ? styles.amount__income : styles.amount__outcome, "tag-18")}>
+                        <div className={isIncome ? styles.amount__income : styles.amount__outcome}>
                             {isIncome ? '+' : '-'}{numberWithCommas(amount)}
                         </div>
                     </div>

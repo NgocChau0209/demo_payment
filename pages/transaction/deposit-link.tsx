@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { useRouter } from 'next/router'
-import { Button } from "../../components/Button/Button";
-import { Title } from "../../components/Title/Title";
-import { transactionAPI } from "../../services/transaction";
-import { userIdRedux, userInfoRedux } from "../../module/redux";
+import { useRouter } from 'next/router';
 import { useSelector } from "react-redux";
-import { Dialog } from "../../components/Dialog/Dialog";
-import { numberWithCommas } from "../../module/common";
-import styles from "../../styles/pages/DepositLink.module.scss";
+import { useEffect, useState } from "react";
+import { numberWithCommas } from "module/common";
+import { transactionAPI } from "services/transaction";
+import Title from "components/Title/Title";
+import Button from "components/Button/Button";
+import Dialog from "components/Dialog/Dialog";
+import styles from "styles/pages/DepositLink.module.scss";
+
 export default function DepositLink() {
       const router = useRouter()
       const { token } = router.query;
@@ -39,17 +39,15 @@ export default function DepositLink() {
                   router.push('/transaction/success');
             }
             else {
-                  setDialog({
-                        isShow: true,
-                        content: res.message
-                  })
+                  let message =  res.message;
+                  setDialog({ isShow: true, message });
             }
       }
 
-      function closeDialog(isShow) {
-            setDialog({
-                  isShow
-            })
+      console.log(dialog);
+
+      function closeDialog() {
+            setDialog({ isShow: false, message:'' })
       }
       return (
             <>
@@ -64,7 +62,7 @@ export default function DepositLink() {
                         <div className={styles.lineBreak}></div>
                         <Button text="Gửi" onClickEvent={goToDeposit} />
 
-                        {dialog.isShow && <Dialog content={dialog.content} isOpen={dialog.isShow} closeDialog={closeDialog} />}
+                        {dialog.isShow && <Dialog content={dialog.message} isOpen={dialog.isShow} />}
                   </div>
             </>
       )

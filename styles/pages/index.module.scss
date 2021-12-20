@@ -1,21 +1,46 @@
 @use "../layout";
+@use "../color";
 
-.user {
+.home_page {
+  display: flex;
+}
+.left {
+  flex-grow: 5;
+}
+
+.right {
+  width: 350px;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.add_card {
   width: 300px;
   margin: auto;
-  @include layout.flex-justify-center;
+  color: color.$white-fff;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  padding: 7px 5px;
+  border-radius: 5px;
+  background: color.$blue-5584AC;
 }
 
-.functionItem {
-  @include layout.flex-center;
-  @include layout.flex-column;
+.add_card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
-.functionText {
-  text-align: center;
+.text_link span {
+  width: 200px;
 }
 
-.function {
-  @include layout.flex-justify-around;
-  margin-top: 20px;
+.card_list {
+  @include layout.flex-align-center;
+  margin-bottom: 20px;
+}
+
+.text_link {
+  width: 270px;
+  margin: 0 20px;
 }

@@ -1,5 +1,5 @@
-export function TransactionIcon({ width = 48, height = 48, background }) {
+export function TransactionIcon({ }) {
     return (
-        <h1>s</h1>
+        <></>
     )
 }

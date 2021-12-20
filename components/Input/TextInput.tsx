@@ -1,23 +1,30 @@
 // @import
 import styles from './TextInput.module.scss';
+import classnames from "classnames";
 
 interface TextInputProps {
-      label: string,
-      name: string,
-      error: any,
-      inputType: string,
-      getInfo: () => {},
+      stylesProps?: {},
+      label?: string,
+      name?: string,
+      error?: any,
+      inputType?: string,
+      value?: any,
+      isDisabled?: boolean
+      getInfo?: ({ }) => void,
+      pattern?: any,
+      inputmode?: string,
+      maxlength?: number
 }
-export default function TextInput({ label, name, getInfo, error, inputType, value, isDisabled = false }) {
+export default function TextInput({ label, name, getInfo, error, inputType, value, isDisabled = false, stylesProps = { container: {}, label: {}, input: {} }, pattern, inputmode, maxlength }: TextInputProps) {
       function handleChange(event: any) {
-            getInfo({ field: event.target.name, value: event.target.value })
+            getInfo && getInfo({ field: event.target.name, value: event.target.value })
       }
 
       return (
-            <div className={styles.container}>
-                  <div className={styles.label}>{label}</div>
-                  <input type={inputType} name={name} id={name} className={styles.input} onChange={handleChange} value={value} disabled={isDisabled}/>
-            {error}
+            <div className={styles.input_box} style={stylesProps?.container}>
+                  <span className={styles.details} style={stylesProps?.label}>{label}</span>
+                  <input type={inputType} name={name} pattern={pattern} id={name} inputMode={inputmode} disabled={isDisabled} className={classnames(styles.input, "text-16")} style={stylesProps?.input} onChange={handleChange} value={value} maxLength={maxlength} />
+                  <p className={styles.error}>{error || ""}</p>
             </div>
       )
 }

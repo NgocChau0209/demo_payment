@@ -1,11 +1,17 @@
 import styles from './Dialog.module.scss';
-import { Button } from '../Button/Button';
+import { Button } from 'components/Button/Button';
 import { useState } from 'react';
-export function Dialog({ content = '', isOpen = false , closeDialog}) {
-      let [isOpenDialog] = useState(isOpen);
+
+interface DialogProps{
+      content: string,
+      isOpen: boolean,
+}
+
+export default function Dialog({ content = '', isOpen = false }) {
+      let [isOpenDialog,setOpenDialog] = useState(isOpen);
 
       function handleCloseDialog() {
-            closeDialog(false);
+            // closeDialog();
       }
 
       return (
@@ -16,7 +22,7 @@ export function Dialog({ content = '', isOpen = false , closeDialog}) {
                                     <div className={styles.content}>
                                           {content}
                                           <div className={styles.button}>
-                                                <Button text="Đóng" onClickEvent={handleCloseDialog} />
+                                                {/* <Button text="Đóng" /> */}
                                           </div>
                                     </div>
                               </div>

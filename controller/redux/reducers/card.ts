@@ -1,11 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { setBankAccount, getCurrentBankAccount } from "../action/card";
+import { SETBANKACCOUNTLIST, CURRENTBANKACCOUNT } from "controller/redux/action/card";
 
 export const cardReducer = createReducer({}, {
-      [setBankAccount]: (state, action) => {
+      [SETBANKACCOUNTLIST]: (state, action) => {
             return { ...state, list: action.payload }
       },
-      [getCurrentBankAccount]: (state, action) => {
+      [CURRENTBANKACCOUNT]: (state, action) => {
             return { ...state, currentCard: action.payload }
-      }
+      },
+
 })

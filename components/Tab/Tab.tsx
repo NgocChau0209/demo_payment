@@ -1,7 +1,11 @@
 import styles from './Tab.module.scss';
 
-export default function Tab({text,icon}){
-    return(
+interface Tab {
+    text: string,
+    icon: string
+}
+export default function Tab({ text, icon }: Tab) {
+    return (
         <div className={styles.container}>
             <div className={styles.icon}>
                 {text}

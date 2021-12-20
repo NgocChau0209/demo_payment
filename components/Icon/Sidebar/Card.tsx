@@ -1,12 +1,11 @@
 export function CardIcon() {
     return (
-        <h1>s</h1>
-    //     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    //         width="92px" height="92px" viewBox="0 0 92 92" enable-background="new 0 0 92 92" xml:space="preserve">
-    //         <path id="XMLID_2192_" d="M92,23.4c0-4.1-3.3-7.4-7.4-7.4H7.4C3.3,16,0,19.3,0,23.4v45.3C0,72.7,3.3,76,7.4,76h77.3
-	// c4.1,0,7.4-3.3,7.4-7.4V23.4z M84,24v7H8v-7H84z M8,68V43h76v25H8z M76.5,55c0,2.2-1.8,4-4,4h-19c-2.2,0-4-1.8-4-4s1.8-4,4-4h19
-	// C74.7,51,76.5,52.8,76.5,55z"/>
-    //     </svg>
-
+        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24">
+            <g id="Rectangle_1" data-name="Rectangle 1" fill="rgba(255,255,255,0)" stroke="#707070" stroke-width="3">
+                <rect width="33" height="24" rx="3" stroke="none" />
+                <rect x="1.5" y="1.5" width="30" height="21" rx="1.5" fill="none" />
+            </g>
+            <line id="Line_1" data-name="Line 1" x2="30.872" transform="translate(1.5 9.887)" fill="none" stroke="#707070" stroke-width="3" />
+        </svg>
     )
 }

@@ -3,7 +3,7 @@ export function validateEmail(email: string) {
       return re.test(String(email).toLowerCase());
 }
 
-export function validateMatchString(str1, str2) {
+export function validateMatchString(str1:string, str2:string) {
       return str1.localeCompare(str2);
 }
 

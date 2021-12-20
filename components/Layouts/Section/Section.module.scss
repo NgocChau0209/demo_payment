@@ -1,5 +1,31 @@
-.container{
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 20px;
+@use "../../../styles/color";
+@use "../../../styles/layout";
+
+.section {
+  @include layout.flex-column;
+  background-color: color.$white-fff;
+  flex: 2;
+  border-radius: 32px;
+  overflow: hidden;
+  height: 100%;
+  margin: 18px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 32px 24px 0px;
+  background-color: color.$white-fff;
+}
+
+.header p {
+  opacity: 0.9;
+  margin: 0;
+  color: color.$black-1f1c2e;
+}
+
+.content {
+  overflow: scroll;
+  padding: 10px 24px;
 }

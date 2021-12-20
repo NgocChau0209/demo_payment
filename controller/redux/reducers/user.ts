@@ -1,12 +1,11 @@
-import { CHECKLOGIN, SETUSERINFO } from './../action/user';
 import { createReducer } from '@reduxjs/toolkit';
+import { CHECKLOGIN, SETUSERINFO } from 'controller/redux/action/user';
 
 export const userReducer = createReducer({ isLogin: false }, {
-      [CHECKLOGIN]: (state,action) => {
-            console.log({ ...state, isLogin: action.payload });
+      [CHECKLOGIN]: (state, action: { payload: boolean }) => {
             return { ...state, isLogin: action.payload };
       },
-      [SETUSERINFO]: (state, action) => {
+      [SETUSERINFO]: (state, action: { payload: any }) => {
             return { ...state, info: action.payload }
       },
 

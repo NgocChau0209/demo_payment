@@ -1,15 +1,15 @@
 import Head from "next/head";
-import '../styles/globals.scss';
+import 'styles/globals.scss';
 import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
-import Layout from '../components/Layouts/Layout/Layout';
-import { store } from '../controller/redux/store/configureStore';
+import Layout from 'components/Layouts/Layout/Layout';
+import { store } from 'controller/redux/store/configureStore';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider
 } from "@apollo/client";
-import RouteGuard from '../components/RouteGuard/RouteGuard';
+import RouteGuard from 'components/RouteGuard/RouteGuard';
 import { useEffect } from "react";
 import { createTransactionQuery, getTransactionQuery } from "./queries";
 const client = new ApolloClient({
@@ -20,22 +20,22 @@ import OneSignal from 'react-onesignal';
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  const initOneSignalNotification = () => {
-    if (window.Onesignal) return false;
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(function () {
-      OneSignal.init({
-        appId: "06d4fe7b-b54d-4ce2-8abc-09b5f29350bf",
-        safari_web_id: "web.onesignal.auto.0c986762-0fae-40b1-a5f6-ee95f7275a97",
-      });
-    });
-  };
+  // const initOneSignalNotification = () => {
+  //   if (window.Onesignal) return false;
+  //   var OneSignal = window.OneSignal || [];
+  //   OneSignal.push(function () {
+  //     OneSignal.init({
+  //       appId: "06d4fe7b-b54d-4ce2-8abc-09b5f29350bf",
+  //       safari_web_id: "web.onesignal.auto.0c986762-0fae-40b1-a5f6-ee95f7275a97",
+  //     });
+  //   });
+  // };
 
 
-  
+
 
   useEffect(() => {
-    initOneSignalNotification();
+    // initOneSignalNotification();
     // client.query({
     //   query: getTransactionQuery,
     //   variables:{
@@ -70,15 +70,16 @@ function MyApp({ Component, pageProps }: AppProps) {
             src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
             async=""
           ></script>
-
-
-          {/* <link rel="icon" href={images.favicon} /> */}
+          <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+          <link rel="stylesheet"
+            href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
         </Head>
-        <Layout>
-          <RouteGuard>
+        <RouteGuard>
+          <Layout>
             <Component {...pageProps} />
-          </RouteGuard>
-        </Layout>
+          </Layout>
+        </RouteGuard>
       </Provider>
     </ApolloProvider>
   );

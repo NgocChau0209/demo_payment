@@ -1,20 +1,16 @@
-import { userInfo } from "../../data/user"
-import styles from "../../styles/pages/User.module.scss"
-import { replaceCharacter } from "../../module/common";
+import styles from "styles/pages/User.module.scss"
+import { replaceCharacter } from "module/common";
 import { useState, useEffect } from "react";
-import { instance as api } from "../../services/api";
-export default function Profile() {
-    const [profile, setProfile] = useState({})
-    useEffect(async () => {
-        const res = await api.post('/', {
-            id: "618ca8cb287a244a3b1c1d8c",
-        })
-    }, [])
+import { api } from "services/api";
+import { userAPI } from "services/user";
+import { useSelector } from 'react-redux';
 
+
+export default function Profile({ userInfo }) {
     return (
         <>
             Thông tin cá nhân
-            <div className={styles.item}>
+            {/* <div className={styles.item}>
                 <p className={styles.title}>
                     Họ và tên
                 </p>
@@ -53,7 +49,19 @@ export default function Profile() {
                 <p className={styles.value}>
                     {userInfo.email}
                 </p>
-            </div>
+            </div> */}
         </>
     )
 }
+
+
+// export async function getStaticProps() {
+//     const userId =  useSelector((state) => state?.user?.info._id);
+//     const userInfo = await userAPI.getProfile(userId);
+//     console.log(userInfo)
+//     return {
+//         props: {
+//             userInfo: null
+//         },
+//     }
+// }
