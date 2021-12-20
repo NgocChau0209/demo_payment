@@ -1,57 +1,61 @@
 import { useState } from "react";
+import { userAPI } from "services/user";
 import { useRouter } from "next/router";
-import { IUser } from '../../interface/User';
-import { userAPI } from "../../services/user";
-import { Title } from "../../components/Title/Title";
-import { Button } from "../../components/Button/Button";
-import TextInput from "../../components/Input/TextInput";
-import { checkLoginAction } from "../../controller/redux/action/user";
-import { setUserInfoRedux } from "../../module/redux";
-import { validatePhoneNumber } from "../../module/validate";
 import { useDispatch } from "react-redux";
+import { setUserInfoRedux } from "module/redux";
+import { checkLoginAction } from "controller/redux/action/user";
+import Image from "next/image";
+import IUser from 'interface/User';
+import classesnames from "classnames";
+import Modal from "components/Modal/Modal";
+import Button from "components/Button/Button";
+import Background from "public/images/login.jpeg";
+import TextInput from "components/Input/TextInput";
+import styles from "styles/pages/Login.module.scss";
 
 export default function Login() {
-      const [signupData, setSignupData] = useState<IUser>({ email: '', phoneNumber: '', name: '', identify: '', password: '', rePassword: '' });
+      const [signupData, setSignupData] = useState<IUser>({ phoneNumber: '', password: '' });
       // format error : {[field]: message}
       const [error, setError] = useState({})
       const router = useRouter();
-      // const [state, dispatch] = useReducer(userReducer);
 
       const dispatch = useDispatch();
       async function handleSubmit() {
             let { password, phoneNumber } = signupData;
+            let errorObj = {};
+            /* check phone input */
             if (!phoneNumber) {
-                  setError({ ...error, phoneNumber: 'Vui lòng nhập số điện thoại' })
+                  errorObj = { ...errorObj, phoneNumber: 'Vui lòng nhập số điện thoại' };
+
             }
             else {
                   deleteError("phoneNumber");
-                  let isPhoneNumberFormat = validatePhoneNumber(phoneNumber);
-                  if (!isPhoneNumberFormat) setError({ ...error, "phoneNumber": 'Số điện thoại không hợp lệ' })
             }
+
+            /* check password input */
             if (!password) {
-                  setError({ ...error, password: 'Vui lòng nhập mật khẩu' })
+                  errorObj = { ...errorObj, password: 'Vui lòng nhập mật khẩu' };
             }
             else {
                   deleteError("password");
             }
-
-            if (!Object.keys(error).length) {
-                  console.log('send api')
+            setError({...error,errorObj});
+            /* sign up */
+            if (!Object.keys(errorObj).length) {
                   let userInfo = await userAPI.login(signupData)
                   if (userInfo && Object.keys(userInfo).length) {
                         setUserInfoRedux(userInfo);
                         dispatch(checkLoginAction(true));
                         router.push('/');
                   }
-                  else {
-                        console.log('login fail')
-                  }
             }
 
       }
 
       function deleteError(field: string) {
-            if (error.hasOwnProperty(field)) delete error.field;
+            if (error.hasOwnProperty(field)) {
+                  setError(delete error.field);
+            }
       }
 
       async function getText(detail: any) {
@@ -60,12 +64,23 @@ export default function Login() {
       }
 
       return (
-            <>
-                  <Title text="Đăng nhập" />
-                  <TextInput label="Số điện thoại" name="phoneNumber" getInfo={getText} />
-                  <TextInput label="Mật khẩu" name="password" inputType="password" getInfo={getText} />
+            <Modal>
+                  <div className={styles.signin_form}>
+                        <div className={styles.signin_container}>
+                              <div className={styles.signin_content}>
+                                    <TextInput label="Số điện thoại" name="phoneNumber" getInfo={getText} stylesProps={{ input: { width: '250px' } }} error={error?.["phoneNumber"]} />
+                                    <TextInput label="Mật khẩu" name="password" inputType="password" getInfo={getText} stylesProps={{ input: { width: '250px' } }} error={error?.["password"]} />
+                              </div>
+                              <a href="/account/signup" className={classesnames(styles.signup, 'text-14')}>Tôi chưa có tài khoản</a>
+                              <div className={styles.signin_button}>
+                                    <Button text="Đăng nhập" onClickEvent={handleSubmit} />
+                              </div>
+                        </div>
+                        <div className={styles.overlay}>
+                              <Image src={Background} alt="" width="500" height="700" quality="50" />
+                        </div>
 
-                  <Button text="Đăng nhập" onClickEvent={handleSubmit} />
-            </>
+                  </div>
+            </Modal>
       )
 }
