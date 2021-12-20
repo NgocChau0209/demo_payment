@@ -1,19 +1,40 @@
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-}
+@use "../../../styles/color";
+@use "../../../styles/layout";
 
-.sidebar {
-  background-color: #f9f9f9;
-  float: left;
-  margin: 20px 10px;
-  min-width: 200px;
-  max-width: 300px;
-  color: #484848;
+.container {
+  @include layout.size(100vh, 100vw);
+  @include layout.flex-column;
 }
 
 .content {
-  margin: 40px;
-  width: calc(100% - 300px);
+  @include layout.size(auto, calc(100% - 70px), color.$blue-f3f6fd);
+  position: relative;
+  min-height: 100vh;
+  top: 0;
+  left: 70px;
+  padding: 20px;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.sidebar {
+  @include layout.size(100%, 70px, color.$black-11101d);
+  @include layout.layoutChild("top-left");
+  position: fixed;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+
+.restrict {
+  left: 200px;
+  width: calc(100% - 200px);
+}
+
+.content .text {
+  display: inline-block;
+  color: color.$black-11101d;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px;
 }
